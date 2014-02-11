@@ -1237,6 +1237,21 @@ void _glfwPlatformPostEmptyEvent(void)
     PostMessage(window->win32.handle, WM_NULL, 0, 0);
 }
 
+void _glfwPlatformGetCursorPos(_GLFWwindow* window, double* xpos, double* ypos)
+{
+    POINT pos = { 0, 0 };
+
+    if (GetCursorPos(&pos))
+    {
+        ScreenToClient(window->win32.handle, &pos);
+
+        if (xpos)
+            *xpos = pos.x;
+        if (ypos)
+            *ypos = pos.y;
+    }
+}
+
 void _glfwPlatformSetCursorPos(_GLFWwindow* window, double xpos, double ypos)
 {
     POINT pos = { (int) xpos, (int) ypos };

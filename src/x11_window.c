@@ -1420,6 +1420,23 @@ void _glfwPlatformPostEmptyEvent(void)
     XFlush(_glfw.x11.display);
 }
 
+void _glfwPlatformGetCursorPos(_GLFWwindow* window, double* xpos, double* ypos)
+{
+    Window root, child;
+    int rootX, rootY, childX, childY;
+    unsigned int mask;
+
+    XQueryPointer(_glfw.x11.display, window->x11.handle,
+                  &root, &child,
+                  &rootX, &rootY, &childX, &childY,
+                  &mask);
+
+    if (xpos)
+        *xpos = childX;
+    if (ypos)
+        *ypos = childY;
+}
+
 void _glfwPlatformSetCursorPos(_GLFWwindow* window, double x, double y)
 {
     // Store the new position so it can be recognized later

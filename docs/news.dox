@@ -40,6 +40,13 @@ GLFW now supports disabling auto-iconification of full screen windows with
 building multi-monitor installations and the like.
 
 
+@subsection news_31_getcursorpos Direct query for cursor position
+
+GLFW now queries the system cursor position directly when you call @ref
+glfwGetCursorPos instead of returning cached data, except for when the window is
+in disabled cursor mode.
+
+
 @section news_30 New features in version 3.0
 
 @subsection news_30_cmake CMake build system

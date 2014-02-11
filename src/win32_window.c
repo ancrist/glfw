@@ -636,8 +636,8 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
             const int newCursorX = GET_X_LPARAM(lParam);
             const int newCursorY = GET_Y_LPARAM(lParam);
 
-            if (newCursorX != window->win32.oldCursorX ||
-                newCursorY != window->win32.oldCursorY)
+            if (newCursorX != window->win32.cursorPosX ||
+                newCursorY != window->win32.cursorPosY)
             {
                 int x, y;
 
@@ -646,8 +646,8 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
                     if (_glfw.focusedWindow != window)
                         return 0;
 
-                    x = newCursorX - window->win32.oldCursorX;
-                    y = newCursorY - window->win32.oldCursorY;
+                    x = newCursorX - window->win32.cursorPosX;
+                    y = newCursorY - window->win32.cursorPosY;
                 }
                 else
                 {
@@ -655,9 +655,8 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
                     y = newCursorY;
                 }
 
-                window->win32.oldCursorX = newCursorX;
-                window->win32.oldCursorY = newCursorY;
-                window->win32.cursorCentered = GL_FALSE;
+                window->win32.cursorPosX = newCursorX;
+                window->win32.cursorPosY = newCursorY;
 
                 _glfwInputCursorMotion(window, x, y);
             }
@@ -1213,13 +1212,11 @@ void _glfwPlatformPollEvents(void)
         }
 
         // Did the cursor move in an focused window that has disabled the cursor
-        if (window->cursorMode == GLFW_CURSOR_DISABLED &&
-            !window->win32.cursorCentered)
+        if (window->cursorMode == GLFW_CURSOR_DISABLED)
         {
             int width, height;
             _glfwPlatformGetWindowSize(window, &width, &height);
             _glfwPlatformSetCursorPos(window, width / 2.0, height / 2.0);
-            window->win32.cursorCentered = GL_TRUE;
         }
     }
 }
@@ -1258,8 +1255,8 @@ void _glfwPlatformSetCursorPos(_GLFWwindow* window, double xpos, double ypos)
     ClientToScreen(window->win32.handle, &pos);
     SetCursorPos(pos.x, pos.y);
 
-    window->win32.oldCursorX = (int) xpos;
-    window->win32.oldCursorY = (int) ypos;
+    window->win32.cursorPosX = (int) xpos;
+    window->win32.cursorPosY = (int) ypos;
 }
 
 void _glfwPlatformApplyCursorMode(_GLFWwindow* window)

@@ -188,10 +188,9 @@ typedef struct _GLFWwindowWin32
     DWORD               dwExStyle; // --"--
 
     // Various platform specific internal variables
-    GLboolean           cursorCentered;
     GLboolean           cursorInside;
     GLboolean           cursorHidden;
-    int                 oldCursorX, oldCursorY;
+    int                 cursorPosX, cursorPosY;
 } _GLFWwindowWin32;
 
 

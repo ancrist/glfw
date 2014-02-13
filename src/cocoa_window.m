@@ -1080,6 +1080,13 @@ void _glfwPlatformSetWindowSize(_GLFWwindow* window, int width, int height)
     [window->ns.object setContentSize:NSMakeSize(width, height)];
 }
 
+void _glfwPlatformSetWindowSizeLimits(_GLFWwindow* window,
+                                      int minwidth, int minheight,
+                                      int maxwidth, int maxheight,
+                                      int numer, int denom)
+{
+}
+
 void _glfwPlatformGetFramebufferSize(_GLFWwindow* window, int* width, int* height)
 {
     const NSRect contentRect = [window->ns.view frame];

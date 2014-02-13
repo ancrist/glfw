@@ -61,6 +61,7 @@ The following dependencies are needed by the examples and test programs:
  - Added `empty` test program for verifying posting of empty events
  - Added `glfwGetWindowFrameSize` for retrieving the size of the frame around
    the client area of a window
+ - Added `glfwSetWindowSizeLimits` for setting absolute and relative size limits
  - Added `GLFW_DONT_CARE` for indicating that any value is acceptable
  - Added `GLFW_ICONIFY_DEFOCUSED` for controlling whether full screen windows
    iconify (and restore the previous video mode) on focus loss

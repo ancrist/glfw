@@ -39,6 +39,12 @@ GLFW now supports querying the size, on each side, of the frame around the
 client area of a window, with @ref glfwGetWindowFrameSize.
 
 
+@subsection news_31_sizelimits Window size limit support
+
+GLFW now supports setting both absolute and relative window size limits with
+@ref glfwSetWindowSizeLimits.
+
+
 @subsection news_31_polite Simultaneous multi-monitor support
 
 GLFW now supports disabling auto-iconification of full screen windows with

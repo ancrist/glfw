@@ -20,6 +20,12 @@ GLFW now provides a callback for receiving the paths of files dropped onto GLFW
 windows.  The callback is set with the @ref glfwSetDropCallback function.
 
 
+@subsection news_31_keyname Key name support
+
+GLFW now provides the @ref glfwGetKeyName function for retrieving the name of
+a physical key according to the current keyboard layout.
+
+
 @subsection news_31_emptyevent Empty event support
 
 GLFW now provides the @ref glfwPostEmptyEvent function for posting an empty

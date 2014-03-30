@@ -187,9 +187,7 @@ static const char* get_key_name(int key)
         case GLFW_KEY_LEFT_SUPER:   return "LEFT SUPER";
         case GLFW_KEY_RIGHT_SUPER:  return "RIGHT SUPER";
         case GLFW_KEY_MENU:         return "MENU";
-        case GLFW_KEY_UNKNOWN:      return "UNKNOWN";
-
-        default:                    return NULL;
+        default:                    return "UNKNOWN";
     }
 }
 
@@ -359,19 +357,20 @@ static void scroll_callback(GLFWwindow* window, double x, double y)
 
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    const char* name = get_key_name(key);
     Slot* slot = glfwGetWindowUserPointer(window);
 
-    printf("%08x to %i at %0.3f: Key 0x%04x Scancode 0x%04x",
-           counter++, slot->number, glfwGetTime(), key, scancode);
-
-    if (name)
-        printf(" (%s)", name);
+    printf("%08x to %i at %0.3f: Key 0x%04x Scancode 0x%04x (%s) (%s)",
+           counter++, slot->number, glfwGetTime(),
+           key, scancode,
+           get_key_name(key),
+           glfwGetKeyName(key, scancode));
 
     if (mods)
         printf(" (with%s)", get_mods_name(mods));
 
     printf(" was %s\n", get_action_name(action));
+
+    glfwGetKeyName(key, scancode);
 
     if (action != GLFW_PRESS)
         return;

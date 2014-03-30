@@ -283,6 +283,12 @@ GLFWAPI int glfwGetKey(GLFWwindow* handle, int key)
     return (int) window->key[key];
 }
 
+GLFWAPI const char* glfwGetKeyName(int key, int scancode)
+{
+    _GLFW_REQUIRE_INIT_OR_RETURN(NULL);
+    return _glfwPlatformGetKeyName(key, scancode);
+}
+
 GLFWAPI int glfwGetMouseButton(GLFWwindow* handle, int button)
 {
     _GLFWwindow* window = (_GLFWwindow*) handle;

@@ -1187,6 +1187,11 @@ void _glfwPlatformPostEmptyEvent(void)
     [NSApp postEvent:event atStart:YES];
 }
 
+const char* _glfwPlatformGetKeyName(int key, int scancode)
+{
+    return NULL;
+}
+
 void _glfwPlatformGetCursorPos(_GLFWwindow* window, double* xpos, double* ypos)
 {
     const NSRect contentRect = [window->ns.view frame];

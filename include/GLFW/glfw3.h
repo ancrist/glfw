@@ -1971,6 +1971,31 @@ GLFWAPI void glfwSetInputMode(GLFWwindow* window, int mode, int value);
  */
 GLFWAPI int glfwGetKey(GLFWwindow* window, int key);
 
+/*! @brief Returns the name of the specified key according to the current
+ * layout.
+ *
+ *  This function returns the name, encoded as UTF-8, of the specified physical
+ *  key according to the current keyboard layout.
+ *
+ *  If the key is a valid [key token](@ref keys), the scancode is ignored.  If
+ *  the key is `GLFW_KEY_UNKNOWN`, it is ignored and the scancode is used.  This
+ *  allows you to pass unmodified the key token and scancode provided to the
+ *  [key callback](@ref GLFWkeyfun).
+ *
+ *  @param[in] key The symbol key to query, or `GLFW_KEY_UNKNOWN`.
+ *  @param[in] scancode The scancode of the key to query, or zero.
+ *  @return The UTF-8 encoded name of the key, or `NULL` if an error occurred.
+ *
+ *  @note The returned string is allocated and freed by GLFW.  You should not
+ *  free it yourself.
+ *
+ *  @note The returned string is valid only until the next call to @ref
+ *  glfwGetKeyName.
+ *
+ *  @ingroup input
+ */
+GLFWAPI const char* glfwGetKeyName(int key, int scancode);
+
 /*! @brief Returns the last reported state of a mouse button for the specified
  *  window.
  *

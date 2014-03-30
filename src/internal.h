@@ -402,6 +402,11 @@ void _glfwPlatformTerminate(void);
  */
 const char* _glfwPlatformGetVersionString(void);
 
+/*! @copydoc glfwGetKeyName
+ *  @ingroup platform
+ */
+const char* _glfwPlatformGetKeyName(int key, int scancode);
+
 /*! @copydoc glfwGetCursorPos
  *  @ingroup platform
  */

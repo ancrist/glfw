@@ -59,6 +59,7 @@ The following dependencies are needed by the examples and test programs:
  - Added `empty` test program for verifying posting of empty events
  - Added `glfwGetWindowFrameSize` for retrieving the size of the frame around
    the client area of a window
+ - Added `GLFW_DONT_CARE` for indicating that any value is acceptable
  - Added `GLFW_ICONIFY_DEFOCUSED` for controlling whether full screen windows
    iconify (and restore the previous video mode) on focus loss
  - Added `GLFW_INCLUDE_ES31` for including the OpenGL ES 3.1 header

@@ -732,6 +732,11 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
             break;
         }
 
+        case WM_ERASEBKGND:
+        {
+            return TRUE;
+        }
+
         case WM_SETCURSOR:
         {
             if (_glfw.focusedWindow == window && LOWORD(lParam) == HTCLIENT)

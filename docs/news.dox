@@ -33,6 +33,13 @@ GLFW now supports querying the size, on each side, of the frame around the
 client area of a window, with @ref glfwGetWindowFrameSize.
 
 
+@subsection news_31_polite Simultaneous multi-monitor support
+
+GLFW now supports disabling auto-iconification of full screen windows with
+[GLFW_ICONIFY_DEFOCUSED](@ref window_hints_wnd).  This is intended for people
+building multi-monitor installations and the like.
+
+
 @section news_30 New features in version 3.0
 
 @subsection news_30_cmake CMake build system
